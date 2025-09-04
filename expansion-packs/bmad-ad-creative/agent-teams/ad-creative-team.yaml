@@ -1,0 +1,17 @@
+id: ad-creative-team
+name: Ad Creative Team
+description: A team of agents for creating ad creatives.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - team
+agents:
+  - creative-strategist
+  - copywriter
+  - visual-designer
+  - video-producer
+  - brand-guardian
+  - scrum-master-creative

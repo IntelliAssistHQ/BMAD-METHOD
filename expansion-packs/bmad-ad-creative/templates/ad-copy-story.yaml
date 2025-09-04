@@ -1,0 +1,30 @@
+id: ad-copy-story-tmpl
+name: Ad Copy Story Template
+description: A template for creating a story with ad copy variations.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - copywriting
+  - template
+placeholders:
+  - name: "creative_brief"
+    description: "The creative brief for the campaign."
+  - name: "ad_copy_variations"
+    description: "A list of ad copy variations."
+content: |
+  # Ad Copy Story
+
+  ## 1. Creative Brief
+  {{creative_brief}}
+
+  ## 2. Ad Copy Variations
+  {{#each ad_copy_variations}}
+  ---
+  ### Variation {{this.id}}
+  **Headline:** {{this.headline}}
+  **Body:** {{this.body}}
+  **CTA:** {{this.cta}}
+  {{/each}}

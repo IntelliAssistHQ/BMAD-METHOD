@@ -1,0 +1,55 @@
+id: ad-copy-variations
+name: Generate Ad Copy Variations
+description: A systematic process for generating multiple ad copy variations for A/B testing.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - copywriting
+  - a/b-testing
+hubs:
+  - name: "Meta Ads Manager"
+    service: "meta-ads"
+    actions:
+      - "create-ad-set"
+      - "create-ad-creative"
+  - name: "Google Ads"
+    service: "google-ads"
+    actions:
+      - "create-ad-group-ad"
+inputs:
+  - name: creative_brief
+    type: file
+    description: "The creative brief for the campaign."
+    required: true
+  - name: number_of_variations
+    type: integer
+    description: "The number of copy variations to generate."
+    required: true
+outputs:
+  - name: ad_copy_story
+    type: file
+    description: "A story file containing the ad copy variations."
+    template: "ad-copy-story.yaml"
+steps:
+  - agent: copywriter
+    action: review-brief
+    description: "Review the creative brief to understand the requirements."
+    inputs:
+      - creative_brief
+  - agent: copywriter
+    action: ab-test-copy
+    description: "Generate the specified number of ad copy variations."
+    inputs:
+      - number_of_variations
+  - agent: pm
+    action: create-doc
+    description: "Create the ad copy story document from the template."
+    inputs:
+      template_file: "ad-copy-story.yaml"
+      output_file: "ad_copy_story.md"
+      variables:
+        - creative_brief: "{{.inputs.creative_brief}}"
+        - ad_copy_variations: "{{.steps.ab-test-copy.outputs.variations}}"

@@ -1,0 +1,49 @@
+id: campaign-assets-tmpl
+name: Campaign Assets Template
+description: A template for creating a complete creative asset inventory.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - assets
+  - template
+placeholders:
+  - name: "project_name"
+    description: "The name of the project or campaign."
+  - name: "ad_copy"
+    description: "A list of final ad copy."
+  - name: "images"
+    description: "A list of final images."
+  - name: "videos"
+    description: "A list of final videos."
+content: |
+  # Campaign Assets: {{project_name}}
+
+  ## 1. Ad Copy
+  {{#each ad_copy}}
+  ---
+  ### Copy {{this.id}}
+  **Headline:** {{this.headline}}
+  **Body:** {{this.body}}
+  **CTA:** {{this.cta}}
+  {{/each}}
+
+  ## 2. Images
+  {{#each images}}
+  ---
+  ### Image {{this.id}}
+  **File Name:** {{this.filename}}
+  **URL:** {{this.url}}
+  **Placement:** {{this.placement}}
+  {{/each}}
+
+  ## 3. Videos
+  {{#each videos}}
+  ---
+  ### Video {{this.id}}
+  **File Name:** {{this.filename}}
+  **URL:** {{this.url}}
+  **Placement:** {{this.placement}}
+  {{/each}}

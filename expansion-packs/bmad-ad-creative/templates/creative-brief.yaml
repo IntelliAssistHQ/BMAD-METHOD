@@ -1,0 +1,54 @@
+id: creative-brief-tmpl
+name: Creative Brief Template
+description: A template for creating a comprehensive creative brief.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - planning
+  - template
+placeholders:
+  - name: "project_name"
+    description: "The name of the project or campaign."
+  - name: "marketing_objective"
+    description: "The primary marketing objective."
+  - name: "target_audience"
+    description: "A detailed description of the target audience."
+  - name: "key_message"
+    description: "The single most important message to communicate."
+  - name: "call_to_action"
+    description: "The desired action for the audience to take."
+  - name: "brand_guidelines"
+    description: "Link to or description of brand guidelines."
+  - name: "budget"
+    description: "The budget for the campaign."
+  - name: "timeline"
+    description: "The timeline for the campaign."
+content: |
+  # Creative Brief: {{project_name}}
+
+  ## 1. Project Overview
+  - **Project Name:** {{project_name}}
+  - **Marketing Objective:** {{marketing_objective}}
+  - **Budget:** {{budget}}
+  - **Timeline:** {{timeline}}
+
+  ## 2. Target Audience
+  {{target_audience}}
+
+  ## 3. Key Message
+  {{key_message}}
+
+  ## 4. Call to Action
+  {{call_to_action}}
+
+  ## 5. Brand Guidelines
+  {{brand_guidelines}}
+
+  ## 6. Mandatories and Restrictions
+  - [List any mandatories or restrictions]
+
+  ## 7. Deliverables
+  - [List the required creative assets]

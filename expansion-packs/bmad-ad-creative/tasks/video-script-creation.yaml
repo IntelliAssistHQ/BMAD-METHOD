@@ -1,0 +1,59 @@
+id: video-script-creation
+name: Create Video Script
+description: A systematic process for creating a script for a video ad.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - video
+  - scriptwriting
+hubs:
+  - name: "Meta Ads Manager"
+    service: "meta-ads"
+    actions:
+      - "upload-video"
+      - "create-ad-creative"
+  - name: "Google Ads"
+    service: "google-ads"
+    actions:
+      - "upload-asset"
+inputs:
+  - name: creative_brief
+    type: file
+    description: "The creative brief for the campaign."
+    required: true
+  - name: video_length
+    type: integer
+    description: "The target length of the video in seconds."
+    required: true
+outputs:
+  - name: video_script
+    type: file
+    description: "A story file containing the video script and storyboard."
+    template: "visual-story.yaml"
+steps:
+  - agent: video-producer
+    action: review-brief
+    description: "Review the creative brief to understand the requirements."
+    inputs:
+      - creative_brief
+  - agent: video-producer
+    action: write-script
+    description: "Write the script for the video ad."
+    inputs:
+      - video_length
+  - agent: video-producer
+    action: create-storyboard
+    description: "Create a storyboard from the script."
+  - agent: pm
+    action: create-doc
+    description: "Create the video script document from the template."
+    inputs:
+      template_file: "visual-story.yaml"
+      output_file: "video_script.md"
+      variables:
+        - creative_brief: "{{.inputs.creative_brief}}"
+        - video_script: "{{.steps.write-script.outputs.script}}"
+        - storyboard: "{{.steps.create-storyboard.outputs.storyboard}}"

@@ -1,0 +1,12 @@
+id: bmad-ad-creative
+name: BMAD Ad Creative Expansion Pack
+version: 0.1.0
+author: bmad-community
+description: An expansion pack for BMAD that provides agents, tasks, templates, and checklists for ad creative work.
+tags:
+  - ad-creative
+  - marketing
+  - advertising
+repository:
+  type: git
+  url: https://github.com/bmad-community/bmad

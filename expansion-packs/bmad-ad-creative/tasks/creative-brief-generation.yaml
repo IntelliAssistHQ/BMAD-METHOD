@@ -1,0 +1,91 @@
+id: creative-brief-generation
+name: Generate Creative Brief
+description: A systematic process for generating a comprehensive creative brief.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - planning
+  - strategy
+hubs:
+  - name: "Meta Ads Manager"
+    service: "meta-ads"
+    actions:
+      - "create-campaign"
+      - "get-ad-account"
+  - name: "Google Ads"
+    service: "google-ads"
+    actions:
+      - "create-campaign"
+      - "get-ad-account"
+inputs:
+  - name: project_name
+    type: string
+    description: "The name of the project or campaign."
+    required: true
+  - name: marketing_objective
+    type: string
+    description: "The primary marketing objective (e.g., brand awareness, lead generation, sales)."
+    required: true
+  - name: target_audience
+    type: string
+    description: "A detailed description of the target audience."
+    required: true
+  - name: key_message
+    type: string
+    description: "The single most important message to communicate."
+    required: true
+  - name: call_to_action
+    type: string
+    description: "The desired action for the audience to take."
+    required: true
+  - name: brand_guidelines
+    type: string
+    description: "Link to or description of brand guidelines."
+    required: true
+  - name: budget
+    type: number
+    description: "The budget for the campaign."
+    required: false
+  - name: timeline
+    type: string
+    description: "The timeline for the campaign."
+    required: false
+outputs:
+  - name: creative_brief
+    type: file
+    description: "The generated creative brief."
+    template: "creative-brief.yaml"
+steps:
+  - agent: creative-strategist
+    action: analyze-brief
+    description: "Analyze the provided inputs to form a coherent strategy."
+    inputs:
+      - project_name
+      - marketing_objective
+      - target_audience
+      - key_message
+      - call_to_action
+      - brand_guidelines
+      - budget
+      - timeline
+  - agent: creative-strategist
+    action: develop-framework
+    description: "Develop a messaging framework based on the strategy."
+  - agent: pm
+    action: create-doc
+    description: "Create the creative brief document from the template."
+    inputs:
+      template_file: "creative-brief.yaml"
+      output_file: "creative_brief.md"
+      variables:
+        - project_name: "{{.inputs.project_name}}"
+        - marketing_objective: "{{.inputs.marketing_objective}}"
+        - target_audience: "{{.inputs.target_audience}}"
+        - key_message: "{{.inputs.key_message}}"
+        - call_to_action: "{{.inputs.call_to_action}}"
+        - brand_guidelines: "{{.inputs.brand_guidelines}}"
+        - budget: "{{.inputs.budget}}"
+        - timeline: "{{.inputs.timeline}}"

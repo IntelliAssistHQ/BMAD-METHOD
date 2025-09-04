@@ -1,0 +1,55 @@
+id: visual-concept-development
+name: Develop Visual Concepts
+description: A systematic process for developing visual concepts for an ad campaign.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - design
+  - concepts
+hubs:
+  - name: "Meta Ads Manager"
+    service: "meta-ads"
+    actions:
+      - "upload-image"
+      - "create-ad-creative"
+  - name: "Google Ads"
+    service: "google-ads"
+    actions:
+      - "upload-asset"
+inputs:
+  - name: creative_brief
+    type: file
+    description: "The creative brief for the campaign."
+    required: true
+  - name: number_of_concepts
+    type: integer
+    description: "The number of visual concepts to generate."
+    required: true
+outputs:
+  - name: visual_story
+    type: file
+    description: "A story file containing the visual concepts."
+    template: "visual-story.yaml"
+steps:
+  - agent: visual-designer
+    action: review-brief
+    description: "Review the creative brief to understand the requirements."
+    inputs:
+      - creative_brief
+  - agent: visual-designer
+    action: create-concept
+    description: "Generate the specified number of visual concepts."
+    inputs:
+      - number_of_concepts
+  - agent: pm
+    action: create-doc
+    description: "Create the visual story document from the template."
+    inputs:
+      template_file: "visual-story.yaml"
+      output_file: "visual_story.md"
+      variables:
+        - creative_brief: "{{.inputs.creative_brief}}"
+        - visual_concepts: "{{.steps.create-concept.outputs.concepts}}"

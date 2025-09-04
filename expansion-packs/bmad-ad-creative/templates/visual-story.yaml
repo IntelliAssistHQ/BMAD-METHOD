@@ -1,0 +1,47 @@
+id: visual-story-tmpl
+name: Visual Story Template
+description: A template for creating a story with visual concepts or a video script.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - design
+  - video
+  - template
+placeholders:
+  - name: "creative_brief"
+    description: "The creative brief for the campaign."
+  - name: "visual_concepts"
+    description: "A list of visual concepts."
+  - name: "video_script"
+    description: "The script for the video ad."
+  - name: "storyboard"
+    description: "The storyboard for the video ad."
+content: |
+  # Visual Story
+
+  ## 1. Creative Brief
+  {{creative_brief}}
+
+  ## 2. Visual Concepts
+  {{#if visual_concepts}}
+  {{#each visual_concepts}}
+  ---
+  ### Concept {{this.id}}
+  **Description:** {{this.description}}
+  **Mood Board:** {{this.mood_board}}
+  **Sketch:** {{this.sketch}}
+  {{/each}}
+  {{/if}}
+
+  ## 3. Video Script
+  {{#if video_script}}
+  {{video_script}}
+  {{/if}}
+
+  ## 4. Storyboard
+  {{#if storyboard}}
+  {{storyboard}}
+  {{/if}}
