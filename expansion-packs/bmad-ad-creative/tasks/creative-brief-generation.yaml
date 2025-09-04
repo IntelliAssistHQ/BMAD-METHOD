@@ -74,7 +74,7 @@ steps:
   - agent: creative-strategist
     action: develop-framework
     description: "Develop a messaging framework based on the strategy."
-  - agent: pm
+  - agent: scrum-master-creative
     action: create-doc
     description: "Create the creative brief document from the template."
     inputs:

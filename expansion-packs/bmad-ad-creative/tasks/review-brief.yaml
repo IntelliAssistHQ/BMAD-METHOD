@@ -1,0 +1,22 @@
+id: review-brief
+name: Review Creative Brief
+description: A task for an agent to review a creative brief.
+author: bmad-community
+owner: bmad-community
+version: 0.1
+creation_date: 2024-09-04
+tags:
+  - ad-creative
+  - review
+  - brief
+inputs:
+  - name: creative_brief
+    type: file
+    description: "The creative brief to be reviewed."
+    required: true
+steps:
+  - agent: self
+    action: review
+    description: "Review the creative brief and provide feedback."
+    inputs:
+      - creative_brief

@@ -47,7 +47,7 @@ steps:
   - agent: video-producer
     action: create-storyboard
     description: "Create a storyboard from the script."
-  - agent: pm
+  - agent: scrum-master-creative
     action: create-doc
     description: "Create the video script document from the template."
     inputs:

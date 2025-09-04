@@ -50,6 +50,7 @@ core_principles:
   - Numbered Options Protocol - Always use numbered lists for user selections
 commands:
   - '*help - Show numbered list of available commands for selection'
+  - '*create-doc - Create a document from a template'
   - '*create-stories - Convert a creative brief into stories'
   - '*manage-backlog - Organize and prioritize the creative backlog'
   - '*assign-tasks - Assign stories to creative agents'
@@ -59,6 +60,7 @@ commands:
 dependencies:
   tasks:
     - creative-brief-generation.yaml
+    - create-doc.md
   templates:
     - ad-copy-story.yaml
     - visual-story.yaml

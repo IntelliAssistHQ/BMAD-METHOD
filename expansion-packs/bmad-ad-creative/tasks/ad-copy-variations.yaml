@@ -44,7 +44,7 @@ steps:
     description: "Generate the specified number of ad copy variations."
     inputs:
       - number_of_variations
-  - agent: pm
+  - agent: scrum-master-creative
     action: create-doc
     description: "Create the ad copy story document from the template."
     inputs:
